@@ -33,11 +33,10 @@
 px4_add_module(
 	MODULE drivers__voxlpm
 	MAIN voxlpm
-	COMPILE_FLAGS
-		-Wno-cast-align # TODO: fix and enable
 	SRCS
 		voxlpm.cpp
 		voxlpm_main.cpp
 	DEPENDS
+		battery
 		px4_work_queue
 	)

@@ -41,9 +41,9 @@
  * @author Nicolae Rosia <nicolae.rosia@gmail.com>
  */
 
-#include <px4_config.h>
-#include <px4_tasks.h>
-#include <px4_posix.h>
+#include <px4_platform_common/px4_config.h>
+#include <px4_platform_common/tasks.h>
+#include <px4_platform_common/posix.h>
 #include <drivers/drv_adc.h>
 
 #include <VirtDevObj.hpp>
@@ -164,7 +164,7 @@ int NavioADC::init()
 
 	for (int i = 0; i < ADC_MAX_CHAN; i++) {
 		char channel_path[sizeof(ADC_SYSFS_PATH)];
-		strncpy(channel_path, ADC_SYSFS_PATH, sizeof(ADC_SYSFS_PATH));
+		strncpy(channel_path, ADC_SYSFS_PATH, sizeof(channel_path));
 		channel_path[sizeof(ADC_SYSFS_PATH) - 2] += i;
 
 		_fd[i] = ::open(channel_path, O_RDONLY);
